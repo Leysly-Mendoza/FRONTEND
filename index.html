@@ -410,7 +410,7 @@
         document.getElementById("btnConsultarTodo").addEventListener("click", async () => {
             const modal = document.getElementById("modalGrid");
             const gridContainer = document.getElementById("gridContainer");
-        try{
+        
             // Limpia el contenedor del grid
             gridContainer.innerHTML = '';
 
@@ -450,11 +450,7 @@
 
             // Renderiza el grid dentro del contenedor
             grid.render(gridContainer);
-        }
-        catch(error){
-            console.error('Error al cargar el grid:', error);
-            Swal.fire('Error', 'No se pudieron cargar los datos.', 'error');
-        }
+
             // Muestra el modal
             modal.style.display = 'block';
         });
