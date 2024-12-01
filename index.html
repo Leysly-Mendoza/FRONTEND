@@ -216,7 +216,7 @@
 
             if (id) {
                 try {
-                    let response = await fetch(`https://crud-xeqq.onrender.com${id}`, { method: "GET" });
+                    let response = await fetch(`https://crud-xeqq.onrender.com/${id}`, { method: "GET" });
 
                     if (response.status === 404) {
                         Swal.fire('Error', 'Personaje no encontrado', 'error');
@@ -275,7 +275,7 @@
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     try {
-                        let response = await fetch(`https://crud-xeqq.onrender.com${id}`, { method: "DELETE" });
+                        let response = await fetch(`https://crud-xeqq.onrender.com/${id}`, { method: "DELETE" });
 
                         if (response.status === 404) {
                             Swal.fire('Error', 'Personaje no encontrado.', 'error');
@@ -358,7 +358,7 @@
             };
 
             try {
-                let response = await fetch("https://crud-xeqq.onrender.com", {
+                let response = await fetch('https://crud-xeqq.onrender.com', {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -383,7 +383,7 @@
             let rol = document.getElementById("rol").value;
 
             try {
-                const response = await fetch(`https://crud-xeqq.onrender.com${id}`, {
+                const response = await fetch(`https://crud-xeqq.onrender.com/${id}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json"
@@ -410,7 +410,7 @@
         document.getElementById("btnConsultarTodo").addEventListener("click", async () => {
             const modal = document.getElementById("modalGrid");
             const gridContainer = document.getElementById("gridContainer");
-
+        try{
             // Limpia el contenedor del grid
             gridContainer.innerHTML = '';
 
@@ -450,7 +450,11 @@
 
             // Renderiza el grid dentro del contenedor
             grid.render(gridContainer);
-
+        }
+        catch(error){
+            console.error('Error al cargar el grid:', error);
+            Swal.fire('Error', 'No se pudieron cargar los datos.', 'error');
+        }
             // Muestra el modal
             modal.style.display = 'block';
         });
@@ -470,5 +474,4 @@
         });
     </script>
 </body>
-
 </html>
