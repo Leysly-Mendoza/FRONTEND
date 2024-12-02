@@ -358,7 +358,7 @@
             };
 
             try {
-                let response = await fetch(`${backendUrl}/Personajes/formato`, {
+                let response = await fetch(`${backendUrl}/Personajes/pdf`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -418,7 +418,7 @@
             const grid = new gridjs.Grid({
                 columns: ['ID', 'Nombre', 'Casa', 'Descripción', 'Rol'],
                 server: {
-                    url: `${backendUrl}/Personajes`,
+                    url: `${backendUrl}/Personajes/formato`,
                     then: data =>
                         data.data.map(personaje => [
                             personaje.id,
