@@ -217,7 +217,7 @@
 
             if (id) {
                 try {
-                    let response = await fetch(`${backendUrl}/personajes/${id}`, { method: "GET" });
+                    let response = await fetch(`${backendUrl}/Personajes/${id}`, { method: "GET" });
 
                     if (response.status === 404) {
                         Swal.fire('Error', 'Personaje no encontrado', 'error');
@@ -258,8 +258,7 @@
 
 
         document.getElementById("btnEliminar").addEventListener("click", async () => {
-            let id = document.getElementById("id").value.trim(); // Asegurarse de que no haya espacios
-
+            let id = document.getElementById("id").value.trim(); 
             if (!id) {
                 Swal.fire('Advertencia', 'El ID es obligatorio para eliminar un personaje.', 'warning');
                 return;
@@ -276,7 +275,7 @@
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     try {
-                        let response = await fetch(`${backendUrl}/personajes/${id}`, { method: "DELETE" });
+                        let response = await fetch(`${backendUrl}/Personajes/${id}`, { method: "DELETE" });
 
                         if (response.status === 404) {
                             Swal.fire('Error', 'Personaje no encontrado.', 'error');
@@ -319,7 +318,7 @@
                     rol: rol,
                 };
                 try {
-                    const response = await fetch(`${backendUrl}/personajes`, {
+                    const response = await fetch(`${backendUrl}/Personajes`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -359,7 +358,7 @@
             };
 
             try {
-                let response = await fetch(`${backendUrl}/personajes`, {
+                let response = await fetch(`${backendUrl}/Personajes`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -384,7 +383,7 @@
             let rol = document.getElementById("rol").value;
 
             try {
-                const response = await fetch(`${backendUrl}/personajes/${id}`, {
+                const response = await fetch(`${backendUrl}/Personajes/${id}`, {
                     method: "PATCH",
                     headers: {
                         "Content-Type": "application/json"
@@ -419,7 +418,7 @@
             const grid = new gridjs.Grid({
                 columns: ['ID', 'Nombre', 'Casa', 'Descripción', 'Rol'],
                 server: {
-                    url: `${backendUrl}/personajes`,
+                    url: `${backendUrl}/Personajes`,
                     then: data =>
                         data.data.map(personaje => [
                             personaje.id,
